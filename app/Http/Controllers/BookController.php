@@ -41,7 +41,7 @@ class BookController extends Controller
 
         $book->save();
 
-        return route("books.index");
+        return redirect()->route('books.index');
     }
 
     /**
