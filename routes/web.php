@@ -16,15 +16,20 @@ use \App\Http\Controllers\ReviewController;
 */
 
 Route::view("/","welcome");
-Route::get("/books",[BookController::class,"index"])->name("books.index");
-Route::get("/reviews",[ReviewController::class,"index"])->name("reviews.index");
-Route::get("/books/create",[BookController::class,"create"])->name('books.create');
-Route::get("/reviews/create",[ReviewController::class,"create"])->name('reviews.create');
 
-Route::post("/books/store",[BookController::class,"store"])->name("books.store");
-Route::post("/reviews/store",[ReviewController::class,"store"])->name("reviews.store");
+Route::controller(BookController::class)->group(function (){
+    Route::get('/books','index')->name('books.index');
+    Route::get('/books/create','create')->name("books.create");
+    Route::post('/books/store','store')->name('books.store');
+    Route::get('/books/{id}','show')->name('books.show');
+});
+
+Route::controller(ReviewController::class)->group(function (){
+    Route::get("reviews",'index')->name('reviews.index');
+    Route::get('reviews/create','create')->name('reviews.create');
+    Route::post('reviews/store',"store")->name('reviews.store');
+});
 
 Route::fallback(function (){
     abort(404);
 });
-

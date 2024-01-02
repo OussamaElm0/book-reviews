@@ -41,7 +41,7 @@ class BookController extends Controller
 
         $book->save();
 
-        return $this->index();
+        return route("books.index");
     }
 
     /**
@@ -49,7 +49,13 @@ class BookController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $book = Book::find($id);
+        $reviews = $book->reviews;
+
+        return view('books.show',[
+            'book' => $book,
+            "reviews" => $reviews
+        ]);
     }
 
     /**
