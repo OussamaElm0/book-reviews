@@ -45,7 +45,7 @@ class ReviewController extends Controller
 
         $review->save();
 
-        return $this->index();
+        return redirect()->route('reviews.index');
     }
 
     /**

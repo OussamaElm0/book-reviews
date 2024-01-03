@@ -14,7 +14,6 @@
                 No book found!
             @endforelse
         </select>
-        <input type="number" name="user_id" >
         <input type="submit" value="Submit">
     </form>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -25,7 +26,11 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view("books.create");
+        $categories = Category::all();
+
+        return view("books.create",[
+            "categories" => $categories
+        ]);
     }
 
     /**
@@ -38,6 +43,7 @@ class BookController extends Controller
         $book->name = $request->name;
         $book->author = $request->author;
         $book->avg_rating = $request->avg_rating;
+        $book->book_category_id = $request->category;
 
         $book->save();
 
@@ -50,10 +56,12 @@ class BookController extends Controller
     public function show(string $id)
     {
         $book = Book::find($id);
+        $category = $book->category->name;
         $reviews = $book->reviews;
 
         return view('books.show',[
             'book' => $book,
+            'category' => $category,
             "reviews" => $reviews
         ]);
     }

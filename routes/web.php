@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CategoriesController;
 use \App\Http\Controllers\ReviewController;
 
 /*
@@ -28,6 +29,11 @@ Route::controller(ReviewController::class)->group(function (){
     Route::get("reviews",'index')->name('reviews.index');
     Route::get('reviews/create','create')->name('reviews.create');
     Route::post('reviews/store',"store")->name('reviews.store');
+    Route::get('reviews/{id}','edit');
+});
+
+Route::controller(CategoriesController::class)->group(function (){
+   Route::get('categories','index')->name("categories.index");
 });
 
 Route::fallback(function (){
