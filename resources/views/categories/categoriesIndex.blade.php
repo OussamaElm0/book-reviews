@@ -5,7 +5,7 @@
 @section("content")
     <div>
         @foreach($categories as $category)
-            <p>{{ $category->name }}</p>
+            <p><a href="{{ route("categories.show",['id' => $category->id]) }}">{{ $category->name }}</a></p>
         @endforeach
     </div>
 @endsection

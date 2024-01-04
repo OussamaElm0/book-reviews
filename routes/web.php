@@ -34,6 +34,7 @@ Route::controller(ReviewController::class)->group(function (){
 
 Route::controller(CategoriesController::class)->group(function (){
    Route::get('categories','index')->name("categories.index");
+   Route::get('categories/{id}','show')->name('categories.show');
 });
 
 Route::fallback(function (){

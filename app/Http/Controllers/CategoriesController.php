@@ -12,8 +12,18 @@ class CategoriesController extends Controller
     {
         $categories = Category::all();
 
-        return view("book_categories.categoriesIndex",[
+        return view("categories.categoriesIndex",[
             'categories' => $categories
+        ]);
+    }
+    public function show($id)
+    {
+        $category = Category::find($id);
+        $books = $category->books;
+
+        return view("categories.show",[
+            "category" => $category,
+            "books" => $books
         ]);
     }
 }
