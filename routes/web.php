@@ -29,7 +29,7 @@ Route::controller(ReviewController::class)->group(function (){
     Route::get("reviews",'index')->name('reviews.index');
     Route::get('reviews/create','create')->name('reviews.create');
     Route::post('reviews/store',"store")->name('reviews.store');
-    Route::get('reviews/{id}','edit');
+    Route::get('reviews/{id}','show')->name("reviews.show");
 });
 
 Route::controller(CategoriesController::class)->group(function (){

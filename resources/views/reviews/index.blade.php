@@ -7,7 +7,7 @@
 
     <ul>
         @foreach($reviews as $review)
-            <li>{{ $review->description }}</li>
+            <li><a href="{{ route("reviews.show",["id" => $review->id]) }}">{{ $review->description }}</a></li>
         @endforeach
     </ul>
 @endsection
