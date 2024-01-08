@@ -9,7 +9,7 @@
         @forelse($books as $book)
             <li><a href="{{ route("books.show", ['id' => $book->id]) }}">{{ $book->name }}</a></li>
         @empty
-            <h1>This category have any book</h1>
+            <h1>This category haven't any book</h1>
         @endforelse
     </ul>
 @endsection

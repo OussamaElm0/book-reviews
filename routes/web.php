@@ -23,6 +23,7 @@ Route::controller(BookController::class)->group(function (){
     Route::get('/books/create','create')->name("books.create");
     Route::post('/books/store','store')->name('books.store');
     Route::get('/books/{id}','show')->name('books.show');
+    Route::get('/book/delete/{id}','destroy');
 });
 
 Route::controller(ReviewController::class)->group(function (){

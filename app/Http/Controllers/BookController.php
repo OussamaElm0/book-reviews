@@ -55,7 +55,7 @@ class BookController extends Controller
      */
     public function show(string $id)
     {
-        $book = Book::find($id);
+        $book = Book::findOrFail($id);
         $category = $book->category->name;
         $reviews = $book->reviews;
 
@@ -87,6 +87,10 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $book = Book::find($id);
+
+        $book->delete();
+
+        return 'meesage';
     }
 }
