@@ -18,4 +18,9 @@
             <h4>No review found!</h4>
         @endforelse
     </ul>
+    <form method="post" action="{{ route("books.destroy",["book" => $book]) }}">
+        @csrf
+        @method('DELETE')
+        <input type="submit" value="Delete ">
+    </form>
 @endsection

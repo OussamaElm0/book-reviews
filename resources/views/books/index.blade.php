@@ -16,4 +16,7 @@
             </tr>
         @endforeach
     </table>
+    @if(session('success'))
+        <p>{{ session('success') }}</p>
+    @endif
 @endsection

@@ -43,11 +43,13 @@ class BookController extends Controller
         $book->name = $request->name;
         $book->author = $request->author;
         $book->avg_rating = $request->avg_rating;
-        $book->book_category_id = $request->category;
+        $book->category_id = $request->category;
 
         $book->save();
 
-        return redirect()->route('books.index');
+        return redirect()
+                ->route('books.index')
+                ->with('success', $book->name . " added successfully");
     }
 
     /**
@@ -88,9 +90,12 @@ class BookController extends Controller
     public function destroy(string $id)
     {
         $book = Book::find($id);
+        $name = $book->name;
 
         $book->delete();
 
-        return 'meesage';
+        return redirect()
+                ->route("books.index")
+                ->with("success", $name . " was deleted successsfully");
     }
 }
