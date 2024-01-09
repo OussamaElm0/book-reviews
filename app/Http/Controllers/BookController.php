@@ -71,25 +71,38 @@ class BookController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Book $book)
     {
-        //
+        return view("books.edit",[
+           "book" => $book,
+            "categories" => Category::all()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Book $book)
     {
-        //
+        $book->name = $request->name;
+        $book->author = $request->author;
+        $book->avg_rating = $request->avg_rating;
+        $book->category_id = $request->category;
+
+        $book->save();
+
+        return redirect()
+                ->route("books.show", [
+                    "id" => $book->id
+                ])
+                ->with("success", "This book was updated successfully.");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Book $book)
     {
-        $book = Book::find($id);
         $name = $book->name;
 
         $book->delete();

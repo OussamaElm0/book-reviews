@@ -3,6 +3,9 @@
 @section("title", $book->name )
 
 @section("content")
+    @if(session("success"))
+        <p>{{ session("success") }}</p>
+    @endif
     <h1>{{ $book->name }}</h1>
     <div>
         <p>Author: {{ $book->author }}</p>
@@ -23,4 +26,5 @@
         @method('DELETE')
         <input type="submit" value="Delete ">
     </form>
+    <button type=""><a href="{{ route("books.edit", ['book' => $book->id]) }}">Update</a></button>
 @endsection
