@@ -14,7 +14,7 @@
         <input type="number" value="{{ $book->avg_rating }}" name="avg_rating" step="1" min="0" max="5"><br>
         <select name="category">
             @foreach($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                <option value="{{ $category->id }}" @if($category == $book->category) selected @endif>{{ $category->name }}</option>
             @endforeach
         </select><br>
         <button type="submit">Update</button>

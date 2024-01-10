@@ -24,11 +24,12 @@ class ReviewController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         $books = Book::all();
         return view("reviews.create",[
-            "books" => $books
+            "books" => $books,
+            "specificBook" => Book::find($request->book)
         ]);
     }
 
@@ -53,13 +54,12 @@ class ReviewController extends Controller
      */
     public function show(string $id)
     {
-        $review = Review::find($id);
+        $review = Review::findOrFail($id);
 
         return view("reviews.show", [
             "review" => $review
         ]);
     }
-
     /**
      * Show the form for editing the specified resource.
      */

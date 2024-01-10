@@ -13,6 +13,7 @@
         <p>Category: {{ $category }}</p>
     </div>
     <h3>Reviews :</h3>
+    <a href="{{ route('reviews.create',["book" => $book]) }}">Add reviews</a>
     <ul>
         @forelse($reviews as $review)
             <li>{{ $review->description }}</li>

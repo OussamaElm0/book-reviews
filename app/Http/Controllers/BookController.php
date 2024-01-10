@@ -111,8 +111,7 @@ class BookController extends Controller
                 ->route("books.index")
                 ->with("success", $name . " was deleted successsfully");
     }
-    public function searchByAuthor(Request $request)
-    {
+    public function searchByAuthor(Request $request){
         $books = Book::where('author', 'like', "%{$request->author}%")->get();
 
         return view("books.index",[
